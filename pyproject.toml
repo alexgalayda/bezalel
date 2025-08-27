@@ -1,0 +1,88 @@
+[project]
+name = "bezalel"
+version = "0.1.0"
+description = ""
+authors = [
+  {name = "agalaida", email = "alexgalayda@proton.me"}
+]
+maintainers = [
+  {name = "agalaida", email = "alexgalayda@proton.me"}
+]
+requires-python = ">=3.12"
+
+dependencies = [
+    "loguru>=0.7.3",
+    "pydantic>=2.11.1",
+    "pydantic-settings>=2.9.1",
+#    "pillow>=11.3.0",
+    "ujson>=5.10.0"
+]
+
+[dependency-groups]
+torch = [
+    "numpy>=2.3.2",
+    "torch>=2.7.1"
+]
+
+jup = [
+    "jupyterlab>=4.4.5"
+]
+
+bio = [
+    "biopython>=1.85",
+]
+
+# mcp = [
+#    "mcp[cli]>=1.10.1",
+#    "langchain-core>=0.3.72",
+#    "langchain-mcp-adapters>=0.1.9",
+#    "langchain-openai>=0.3.28",
+#    "langgraph>=0.5.4"
+#]
+
+#web = [  
+#    "fastapi[standard]>=0.116.1"
+#]
+
+dev = [
+    "pre-commit>=4.2.0",
+    "pytest>=8.4.1",
+    "pytest-asyncio>=1.1.0",
+    "pytest-cov>=6.2.1",
+    "ruff>=0.12.4"
+]
+
+[build-system]
+requires = ["uv_build>=0.7.15,<0.8.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 79
+target-version = "py312"
+show-fixes = true
+src = ["src/bezalel", "run.py"]
+
+[tool.ruff.lint]
+fixable = ["ALL", "I"]
+ignore = [
+  "D100",  # missing docstring in public module
+  "D101", "D102", "D103", "D107",
+  "ANN",        # missing type annotations
+  "E501",       # line length
+  "TRY003",     # long exception messages
+  "EM101",      # string literal in exception
+  "EM102",      # f-string in exception
+]
+
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["bezalel"]
