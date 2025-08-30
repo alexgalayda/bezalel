@@ -1,5 +1,5 @@
 #!make
-.PHONY: docker-gpu docker-cpu podman-gpu podman-cpu
+.PHONY: podman-gpu podman-cpu
 IMAGE_NAME = bezalel
 IMAGE_TAG = 0.1-cpu
 
