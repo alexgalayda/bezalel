@@ -24,9 +24,10 @@ podman-run-gpu:
 		--userns=keep-id \
 		--shm-size=64g \
 		--net host \
-		--hooks-dir=/usr/share/containers/oci/hooks.d \
 		--security-opt=label=disable \
 		--device nvidia.com/gpu=all \
+		-e NVIDIA_VISIBLE_DEVICES=all \
+		-e NVIDIA_DRIVER_CAPABILITIES=all \
 		-v $(PWD):/home/${USER_NAME}/bezalel \
 		$(IMAGE_NAME):$(IMAGE_TAG) bash
 
