@@ -26,7 +26,7 @@ def main(cfg: DictConfig) -> None:
                 **cfg.dataset)
             train_dataset = ProteinDataset(train_dataset_config)
             val_dataset = ProteinDataset(val_dataset_config)
-            val_dataset.qdrant = train_dataset.qdrant            
+            val_dataset.qdrant = train_dataset.qdrant
             train(
                 model,
                 train_dataset,

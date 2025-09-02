@@ -3,8 +3,8 @@ from datetime import datetime
 from pathlib import Path
 
 import numpy as np
-import ujson as json
 import torch
+import ujson as json
 from omegaconf import DictConfig
 from torch import nn, optim
 
@@ -17,7 +17,7 @@ def save_json(data: dict, path: Path):
 
 
 def load_json(path: Path) -> dict:
-    with open(path, "r") as f:
+    with open(path) as f:
         return json.load(f)
 
 

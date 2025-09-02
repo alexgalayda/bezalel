@@ -1,8 +1,8 @@
 from typing import Literal
 
+import torch
 from omegaconf import DictConfig
 from pydantic import BaseModel
-import torch
 from torch import nn
 from torch.nn import LayerNorm
 from torchvision.ops import MLP
@@ -32,14 +32,14 @@ def get_model(
         case "mlp":
             config = MLPConfig(**config).model_dump()
             return MLP(
-                in_channels=config["in_channels"], 
+                in_channels=config["in_channels"],
                 hidden_channels=config["hidden_channels"] + [config["out_channels"]],
                 norm_layer=LayerNorm
             )
         case "mlp_sigmoid":
             config = MLPSigmoidConfig(**config).model_dump()
             return MLPSigmoid(
-                in_channels=config["in_channels"], 
+                in_channels=config["in_channels"],
                 hidden_channels=config["hidden_channels"] + [config["out_channels"]],
                 norm_layer=LayerNorm
             )

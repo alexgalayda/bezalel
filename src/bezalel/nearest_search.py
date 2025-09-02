@@ -1,12 +1,12 @@
 from pathlib import Path
 
-from tqdm.auto import tqdm
-from pydantic import BaseModel
 import numpy as np
 import torch
-from qdrant_client import QdrantClient
-from qdrant_client.models import VectorParams, Distance
 from loguru import logger as loguru_logger
+from pydantic import BaseModel
+from qdrant_client import QdrantClient
+from qdrant_client.models import Distance, VectorParams
+from tqdm.auto import tqdm
 
 from bezalel.utils import load_json
 
@@ -47,7 +47,7 @@ class Qdrant:
         ).points
         points = [
             {
-                "id": point.id, 
+                "id": point.id,
                 "vector": torch.tensor(point.vector) if point.vector is not None else None,
                 "name": point.payload["name"]
             } for point in points]

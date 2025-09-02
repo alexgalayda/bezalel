@@ -6,6 +6,7 @@ from omegaconf import DictConfig
 from pydantic import BaseModel
 from torch import nn
 from torch.utils.tensorboard import SummaryWriter
+
 from bezalel.checkpoint_saver import (
     get_last_checkpoint,
     load_model_checkpoint,

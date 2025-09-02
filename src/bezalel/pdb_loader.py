@@ -1,15 +1,15 @@
-from pathlib import Path
 from enum import Enum
+from pathlib import Path
 from uuid import uuid4
 
 import numpy as np
-from tqdm.auto import tqdm
+from Bio.PDB import PDBParser, PPBuilder
+from Bio.PDB.Chain import Chain as BioChain
+from Bio.PDB.Model import Model as BioModel
+from Bio.PDB.Residue import Residue as BioResidue
 from loguru import logger as loguru_logger
 from pydantic import BaseModel
-from Bio.PDB import PDBParser, PPBuilder
-from Bio.PDB.Model import Model as BioModel
-from Bio.PDB.Chain import Chain as BioChain
-from Bio.PDB.Residue import Residue as BioResidue
+from tqdm.auto import tqdm
 
 from bezalel.pdb_convert import map_residue
 from bezalel.utils import save_json

@@ -1,12 +1,13 @@
 from enum import Enum
 from pathlib import Path
 
-from tqdm.auto import tqdm
-from pydantic import BaseModel
-from transformers import EsmModel, EsmTokenizer
 import torch
+from pydantic import BaseModel
+from tqdm.auto import tqdm
+from transformers import EsmModel, EsmTokenizer
 
 from bezalel.utils import load_json
+
 
 class ModelName(Enum):
     ESM2_T48_15B_UR50D = "facebook/esm2_t48_15B_UR50D"

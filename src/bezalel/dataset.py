@@ -2,14 +2,13 @@ from pathlib import Path
 
 import numpy as np
 import torch
-from pydantic import BaseModel
-from loguru import logger as loguru_logger
 from Bio import Align
+from loguru import logger as loguru_logger
+from pydantic import BaseModel
 
-from bezalel.utils import root_dir
-from bezalel.nearest_search import Qdrant, QdrantConfig, get_general_embedding
 from bezalel.embeddings import Embedding, EmbeddingModel
-from bezalel.utils import load_json
+from bezalel.nearest_search import Qdrant, QdrantConfig, get_general_embedding
+from bezalel.utils import load_json, root_dir
 
 
 def make_main_features(E: torch.Tensor, prior: torch.Tensor | None = None):
