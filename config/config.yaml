@@ -1,0 +1,50 @@
+mode: train
+
+device: &device cuda
+seed: 42
+
+dataset:
+  preload: False
+  database_dir: data/processed
+
+mlp:
+  in_channels: 1280
+  hidden_channels: [100, 10]
+  out_channels: 1
+
+mlp_sigmoid:
+  in_channels: 1280
+  hidden_channels: [100, 10]
+  out_channels: 1
+
+model:
+  name: mlp_sigmoid
+  device: *device
+
+optimizer:
+  name: Adam
+  learning_rate: 1e-4
+
+loss:
+  names: [bce]
+  alphas: [1]
+
+accuracy_upper:
+  task: binary
+  threshold: 0.5
+
+metrics:
+  - accuracy_upper
+
+train:
+  num_epochs: 5
+  device: *device
+  log_dir: logs
+  checkpoint_dir: checkpoints
+  train_path: data/processed
+  val_path: data/processed_test
+
+test:
+  device: *device
+  checkpoint_path: checkpoints
+  test_path: data/processed_test

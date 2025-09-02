@@ -1,7 +1,7 @@
 #!make
 .PHONY: podman-gpu podman-cpu
 IMAGE_NAME = bezalel
-IMAGE_TAG = 0.1-cpu
+IMAGE_TAG = 0.1-gpu
 
 USER_NAME = $(shell whoami)
 USER_ID = $(shell id -u)
@@ -29,6 +29,7 @@ podman-run-gpu:
 		-e NVIDIA_VISIBLE_DEVICES=all \
 		-e NVIDIA_DRIVER_CAPABILITIES=all \
 		-v $(PWD):/home/${USER_NAME}/bezalel \
+		-v $(PWD)/.cache:/home/${USER_NAME}/.cache \
 		$(IMAGE_NAME):$(IMAGE_TAG) bash
 
 
